@@ -21,9 +21,11 @@ class Command(BaseCommand):
                 print(result.find('a')['href'])
                 shop_department_name= result.find('a').text
                 category_href = result.find('a')['href']
-                print(shop_department_name)
                 shop_department = ShopDepartment.objects.get(name=shop_department_name)
+
+                print(shop_department_name)
                 print(shop_department)
+
                 url_category = requests.get(url_base + category_href)
                 web = BeautifulSoup(url_category.text, 'html.parser')
                 categories = web.find_all('li', attrs={'class', 'shop-category-item'})
@@ -32,4 +34,11 @@ class Command(BaseCommand):
                 for category in categories:
                     print(category.find('a').find('p').text)
                     print(category.find('img')['src'])
-                print ('##########')
+                    category_name = category.find('a').find('p').text
+                    category_image = category.find('img')['src']
+
+                    Category(
+                        name=category_name,
+                        category=shop_department,
+                        image_url=category_image
+                    ).save()
