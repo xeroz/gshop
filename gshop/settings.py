@@ -45,7 +45,8 @@ INSTALLED_APPS = [
 
     # apps
     'apps.products',
-    'apps.web'
+    'apps.web',
+    'scrapping',
 ]
 
 MIDDLEWARE = [

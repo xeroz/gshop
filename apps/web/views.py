@@ -3,7 +3,7 @@ from django.views.generic.base import TemplateView
 
 class HomePageView(TemplateView):
 
-    template_name = "shop/layouts/base.html"
+    template_name = "shop/web/home.html"
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
