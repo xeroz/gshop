@@ -7,6 +7,7 @@ class Brand(models.Model):
 
 class ShopDepartment(models.Model):
     name = models.CharField(max_length=50)
+    active = models.BooleanField(default=False)
 
 
 class Category(models.Model):
@@ -16,6 +17,7 @@ class Category(models.Model):
         related_name='categories',
         on_delete=models.DO_NOTHING,
     )
+    image_url = models.URLField(blank=True)
 
 
 class Product(models.Model):
