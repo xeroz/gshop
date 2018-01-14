@@ -17,9 +17,11 @@ class Command(BaseCommand):
         # print(results)
 
         cont = 0
+        pk = 1
         for result in results:
             cont = cont + 1
             if cont % 2 == 0:
                 ShopDepartment(
+                    pk=pk,
                     name=result.find('a').text
                 ).save()
