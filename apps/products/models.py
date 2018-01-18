@@ -9,6 +9,12 @@ class ShopDepartment(models.Model):
     name = models.CharField(max_length=50)
     active = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.name
+
+    def get_categories(self):
+        return self.categories.all()
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50)

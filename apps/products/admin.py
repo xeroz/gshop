@@ -4,7 +4,8 @@ from .models import ShopDepartment, Category
 
 @admin.register(ShopDepartment)
 class ShopDepartmentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name', 'active']
+    list_editable = ['active']
 
 
 @admin.register(Category)
