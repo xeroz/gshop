@@ -14,16 +14,14 @@
       <li class="has-megamenu active">
         <a href="index.html"><span>Home</span></a>
       </li>
-      <li class="has-megamenu"><a href="#"><span>Mega Menu</span></a>
+      {% for shop_department in shop_departments %}
+      <li class="has-megamenu"><a href="#"><span>{{ shop_department.name }}</span></a>
         <ul class="mega-menu">
           <li><span class="mega-menu-title">Top Categories</span>
             <ul class="sub-menu">
-              <li><a href="#">Men's Shoes</a></li>
-              <li><a href="#">Women's Shoes</a></li>
-              <li><a href="#">Shirts and Tops</a></li>
-              <li><a href="#">Swimwear</a></li>
-              <li><a href="#">Shorts and Pants</a></li>
-              <li><a href="#">Accessories</a></li>
+              {% for category in shop_department.get_categories %}
+              <li><a href="#">{{ category.name }}</a></li>
+              {% endfor %}
             </ul>
           </li>
           <li><span class="mega-menu-title">Specialty Shops</span>
@@ -55,6 +53,7 @@
           </li>
         </ul>
       </li>
+      {% endfor %}
     </ul>
   </nav>
   <!-- Toolbar-->
