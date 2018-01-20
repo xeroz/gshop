@@ -4,12 +4,21 @@ from uuslug import uuslug
 
 class Brand(models.Model):
     name = models.CharField(max_length=120)
+    slug = models.SlugField(blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = uuslug(self.name, instance=self)
+        super(Brand, self).save(*args, **kwargs)
 
 
 class ShopDepartment(models.Model):
     name = models.CharField(max_length=50)
     active = models.BooleanField(default=False)
     slug = models.SlugField(blank=True)
+    web_url = models.URLField(blank=True)
 
     def __str__(self):
         return self.name
@@ -31,6 +40,7 @@ class Category(models.Model):
     )
     image_url = models.URLField(blank=True)
     slug = models.SlugField(blank=True)
+    web_url = models.URLField(blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self)
