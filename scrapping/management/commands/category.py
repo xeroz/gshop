@@ -15,6 +15,7 @@ class Command(BaseCommand):
         results = soup.find('ul', attrs={'class': 'categories-list-box'})
 
         cont = 0
+        pk = 0
         for result in results:
             cont = cont + 1
             if cont % 2 == 0:
@@ -32,13 +33,18 @@ class Command(BaseCommand):
                 print(categories)
 
                 for category in categories:
+                    pk = pk + 1
                     print(category.find('a').find('p').text)
+                    print(category.find('a')['href'])
                     print(category.find('img')['src'])
                     category_name = category.find('a').find('p').text
                     category_image = category.find('img')['src']
+                    category_url = category.find('a')['href']
 
                     Category(
+                        pk=pk,
                         name=category_name,
                         category=shop_department,
-                        image_url=category_image
+                        image_url=category_image,
+                        web_url=category_url
                     ).save()
