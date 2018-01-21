@@ -41,6 +41,9 @@ class Category(models.Model):
     slug = models.SlugField(blank=True)
     web_url = models.URLField(blank=True)
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self)
         super(Category, self).save(*args, **kwargs)
@@ -49,11 +52,14 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=50)
     discounts = models.IntegerField()
+    price = models.IntegerField(default=0)
     description = models.CharField(max_length=150)
     brand = models.ForeignKey(
         Brand,
         related_name='products',
         on_delete=models.DO_NOTHING,
+        blank=True,
+        null=True
     )
     category = models.ForeignKey(
         Category,
