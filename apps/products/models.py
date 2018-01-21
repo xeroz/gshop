@@ -1,4 +1,5 @@
 from django.db import models
+from .managers import ShopDepartmentManager
 from uuslug import uuslug
 
 
@@ -19,6 +20,7 @@ class ShopDepartment(models.Model):
     active = models.BooleanField(default=False)
     slug = models.SlugField(blank=True)
     web_url = models.URLField(blank=True)
+    objects = ShopDepartmentManager()
 
     def __str__(self):
         return self.name
@@ -26,9 +28,6 @@ class ShopDepartment(models.Model):
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self)
         super(ShopDepartment, self).save(*args, **kwargs)
-
-    def get_categories(self):
-        return self.categories.all()
 
 
 class Category(models.Model):

@@ -19,7 +19,7 @@
         <ul class="mega-menu">
           <li><span class="mega-menu-title">Top Categories</span>
             <ul class="sub-menu">
-              {% for category in shop_department.get_categories %}
+              {% for category in shop_department.categories.all %}
               <li><a href="#">{{ category.name }}</a></li>
               {% endfor %}
             </ul>
