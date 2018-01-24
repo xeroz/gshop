@@ -1,6 +1,7 @@
 from django.db import models
 from .managers import ShopDepartmentManager
 from uuslug import uuslug
+from django.urls import reverse
 
 
 class Brand(models.Model):
@@ -48,11 +49,14 @@ class Category(models.Model):
         self.slug = uuslug(self.name, instance=self)
         super(Category, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('products:list', kwargs={'slug': self.slug})
+
 
 class Product(models.Model):
-    name = models.CharField(max_length=50)
-    discounts = models.IntegerField()
-    price = models.IntegerField(default=0)
+    name = models.CharField(max_length=200)
+    discounts = models.FloatField(default=0)
+    price = models.FloatField(default=0)
     description = models.CharField(max_length=150)
     brand = models.ForeignKey(
         Brand,
@@ -66,6 +70,7 @@ class Product(models.Model):
         related_name='products',
         on_delete=models.DO_NOTHING,
     )
+    image = models.URLField(blank=True)
 
 
 class ImageProduct(models.Model):

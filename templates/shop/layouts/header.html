@@ -20,11 +20,11 @@
           <li><span class="mega-menu-title">Top Categories</span>
             <ul class="sub-menu">
               {% for category in shop_department.categories.all %}
-              <li><a href="#">{{ category.name }}</a></li>
+              <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
               {% endfor %}
             </ul>
           </li>
-          <li><span class="mega-menu-title">Specialty Shops</span>
+          <li><span class="mega-menu-title">Brands</span>
             <ul class="sub-menu">
               <li><a href="#">Junior's Shop</a></li>
               <li><a href="#">Swim Shop</a></li>

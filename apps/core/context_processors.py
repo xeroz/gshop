@@ -1,4 +1,4 @@
-from apps.products.models import ShopDepartment
+from apps.products.models import ShopDepartment, Product
 
 
 def processors(request):

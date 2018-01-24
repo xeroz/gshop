@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ShopDepartment, Category, Brand
+from .models import ShopDepartment, Category, Brand, Product
 
 
 @admin.register(ShopDepartment)
@@ -13,6 +13,13 @@ class BrandAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['pk', 'name', 'price', 'brand', 'category']
+    list_filter = ['category']
+
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['pk', 'name', 'category']
+    list_filter = ['category']
