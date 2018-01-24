@@ -8,6 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
+        Category.objects.all().delete()
         url_base = 'https://www.gearbest.com'
         url = requests.get(url_base)
         soup = BeautifulSoup(url.text, 'html.parser')
@@ -20,7 +21,7 @@ class Command(BaseCommand):
             cont = cont + 1
             if cont % 2 == 0:
                 print(result.find('a')['href'])
-                shop_department_name= result.find('a').text
+                shop_department_name = result.find('a').text
                 category_href = result.find('a')['href']
                 shop_department = ShopDepartment.objects.get(name=shop_department_name)
 
@@ -41,10 +42,14 @@ class Command(BaseCommand):
                     category_image = category.find('img')['src']
                     category_url = category.find('a')['href']
 
-                    Category(
-                        pk=pk,
+                    Category.objects.get_or_create(
                         name=category_name,
-                        category=shop_department,
-                        image_url=category_image,
-                        web_url=category_url
-                    ).save()
+                        defaults={
+                            'pk': pk,
+                            'name': category_name,
+                            'category': shop_department,
+                            'image_url': category_image,
+                            'web_url': category_url
+                        },
+                    )
+                    print('#######################3')

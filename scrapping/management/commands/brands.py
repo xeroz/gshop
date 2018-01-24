@@ -8,6 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
+        Brand.objects.all().delete()
         url_base = 'https://www.gearbest.com'
         shop_departments = ShopDepartment.objects.all()
 
@@ -32,6 +33,7 @@ class Command(BaseCommand):
                             pp = brand.find('a')
                             pp.i.decompose()
                             brand_name = pp.text
+                            brand_name = brand_name.strip()
                             print(brand_name)
                             print(brand.find('a')['href'])
                             print('###############')
@@ -40,6 +42,6 @@ class Command(BaseCommand):
                                 name=brand_name,
                                 defaults={
                                     'pk': pk,
-                                    'name': brand_name
+                                    'name': brand_name.strip()
                                 },
                             )
