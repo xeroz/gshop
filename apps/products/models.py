@@ -71,6 +71,15 @@ class Product(models.Model):
         on_delete=models.DO_NOTHING,
     )
     image = models.URLField(blank=True)
+    slug = models.SlugField(blank=True)
+    web_url = models.URLField(blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = uuslug(self.name, instance=self)
+        super(Product, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('products:detail', kwargs={'slug': self.slug})
 
 
 class ImageProduct(models.Model):
@@ -85,7 +94,7 @@ class ImageProduct(models.Model):
 class Publicity(models.Model):
     url = models.URLField()
     product = models.ForeignKey(
-        Product,
+        Category,
         related_name='publicity',
         on_delete=models.DO_NOTHING,
     )
