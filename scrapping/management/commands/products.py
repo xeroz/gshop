@@ -50,7 +50,9 @@ class Command(BaseCommand):
                             name=product_name,
                             price=product_price,
                             category=category_obj,
-                            brand=brand_obj
+                            brand=brand_obj,
+                            image=product_image,
+                            web_url=product_url,
                         ).save()
                     except Exception:
                         Product(
@@ -58,6 +60,8 @@ class Command(BaseCommand):
                             name=product_name,
                             price=product_price,
                             category=category_obj,
+                            image=product_image,
+                            web_url=product_url,
                         ).save()
 
                     print(product_brand)
