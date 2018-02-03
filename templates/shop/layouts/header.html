@@ -12,7 +12,7 @@
   <nav class="site-menu">
     <ul>
       <li class="has-megamenu active">
-        <a href="index.html"><span>Home</span></a>
+        <a href="{% url 'web:home' %}"><span>Home</span></a>
       </li>
       {% for shop_department in shop_departments %}
       <li class="has-megamenu"><a href="#"><span>{{ shop_department.name }}</span></a>

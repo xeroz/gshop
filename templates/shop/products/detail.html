@@ -9,20 +9,28 @@
          <div class="product-gallery">
             <div class="gallery-wrapper">
                {% for images in object.image_product.all %}
-               <div {% if forloop.first %} class="gallery-item active" {% else %} class="gallery-item" {% endif %}>
+               {% if forloop.first %}
+               <div class="gallery-item active">
+               {% else %}
+               <div class="gallery-item">
+               {% endif %}
                   <a href="{{ images.url }}" data-hash="one" data-size="1000x667"></a>
                </div>
                {% endfor %}
             </div>
             <div class="product-carousel owl-carousel">
                {% for images in object.image_product.all %}
-                  <div data-hash="one"><img src="{{ images.url }}" alt="Product"></div>
+                  <div data-hash="{{ forloop.counter }}"><img src="{{ images.url }}" alt="Product"></div>
                {% endfor %}
             </div>
             <ul class="product-thumbnails">
                {% for images in object.image_product.all %}
-               <li {% if forloop.first %} class="active" {% endif %}>
-                  <a href="#one"><img src="{{ images.url }}" alt="Product"></a>
+               {% if forloop.first %}
+               <li class="active">
+               {% else %}
+               <li>
+               {% endif %}
+                  <a href="#{{ forloop.counter }}"><img src="{{ images.url }}" alt="Product"></a>
                </li>
                {% endfor %}
             </ul>
