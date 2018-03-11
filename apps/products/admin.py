@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ShopDepartment, Category, Brand, Product, ImageProduct
+from .models import ShopDepartment, Category, Brand, Product, ImageProduct, DescriptionProduct
 
 
 @admin.register(ShopDepartment)
@@ -15,8 +15,10 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['pk', 'name', 'price', 'brand', 'category']
+    list_display = ['pk', 'name', 'price', 'brand', 'category', 'web_url']
     list_filter = ['category']
+    search_fields = ['web_url', 'name']
+    list_editable = ['brand']
 
 
 @admin.register(Category)
@@ -27,4 +29,9 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(ImageProduct)
 class ImageProductAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(DescriptionProduct)
+class DescriptionProducttAdmin(admin.ModelAdmin):
     pass

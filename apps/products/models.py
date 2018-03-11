@@ -2,6 +2,7 @@ from django.db import models
 from .managers import ShopDepartmentManager
 from uuslug import uuslug
 from django.urls import reverse
+from froala_editor.fields import FroalaField
 
 
 class Brand(models.Model):
@@ -41,6 +42,7 @@ class Category(models.Model):
     image_url = models.URLField(blank=True)
     slug = models.SlugField(blank=True)
     web_url = models.URLField(blank=True)
+    top_category = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -57,7 +59,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     discounts = models.FloatField(default=0)
     price = models.FloatField(default=0)
-    description = models.CharField(max_length=150)
+    description = models.CharField(max_length=150, blank=True)
     brand = models.ForeignKey(
         Brand,
         related_name='products',
@@ -80,6 +82,15 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('products:detail', kwargs={'slug': self.slug})
+
+
+class DescriptionProduct(models.Model):
+    content = FroalaField()
+    product = models.OneToOneField(
+        Product,
+        related_name='descripcion_product',
+        on_delete=models.DO_NOTHING,
+    )
 
 
 class ImageProduct(models.Model):
