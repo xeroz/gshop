@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.products',
     'apps.web',
     'apps.core',
+    'apps.users',
     'scrapping',
 ]
 

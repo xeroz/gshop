@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     path(r'', include('apps.web.urls', namespace='web')),
     path(r'', include('apps.products.urls', namespace='products')),
+    path(r'', include('apps.users.urls', namespace='users')),
+    url(r'^froala_editor/', include('froala_editor.urls')),
 ]
