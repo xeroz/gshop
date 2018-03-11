@@ -1,4 +1,6 @@
 from django.views.generic.base import TemplateView
+from .models import BannerHome
+from apps.products.models import ShopDepartment
 
 
 class HomePageView(TemplateView):
@@ -7,4 +9,6 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
+        context['banners_home'] = BannerHome.objects.all()
+        context['shop_departements'] = ShopDepartment.objects.filter(active=True)
         return context

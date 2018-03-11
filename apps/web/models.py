@@ -8,6 +8,5 @@ class InfoSite(models.Model):
     email = models.EmailField()
 
 
-
 class BannerHome(models.Model):
     image = models.URLField()
