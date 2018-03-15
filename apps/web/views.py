@@ -10,5 +10,5 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         context['banners_home'] = BannerHome.objects.all()
-        context['shop_departements'] = ShopDepartment.objects.filter(active=True)
+        context['shop_departements'] = ShopDepartment.objects.filter(top_shop=True)
         return context

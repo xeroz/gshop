@@ -23,6 +23,7 @@ class ShopDepartment(models.Model):
     slug = models.SlugField(blank=True)
     web_url = models.URLField(blank=True)
     objects = ShopDepartmentManager()
+    top_shop = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -30,6 +31,9 @@ class ShopDepartment(models.Model):
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self)
         super(ShopDepartment, self).save(*args, **kwargs)
+
+    def get_top_category(self):
+        return self.categories.filter(top_category=True)
 
 
 class Category(models.Model):
@@ -42,7 +46,6 @@ class Category(models.Model):
     image_url = models.URLField(blank=True)
     slug = models.SlugField(blank=True)
     web_url = models.URLField(blank=True)
-    top_category = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

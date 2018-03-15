@@ -4,8 +4,8 @@ from .models import ShopDepartment, Category, Brand, Product, ImageProduct, Desc
 
 @admin.register(ShopDepartment)
 class ShopDepartmentAdmin(admin.ModelAdmin):
-    list_display = ['name', 'active']
-    list_editable = ['active']
+    list_display = ['name', 'active', 'top_shop']
+    list_editable = ['active', 'top_shop']
 
 
 @admin.register(Brand)
