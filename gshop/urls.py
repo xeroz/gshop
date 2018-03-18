@@ -23,4 +23,5 @@ urlpatterns = [
     path(r'', include('apps.products.urls', namespace='products')),
     path(r'', include('apps.users.urls', namespace='users')),
     url(r'^froala_editor/', include('froala_editor.urls')),
+    url('', include('social_django.urls', namespace='social'))
 ]
