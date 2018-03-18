@@ -157,9 +157,13 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.instagram.InstagramOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
-    # 'demos.auth.CustomEmailAuthBackend.EmailAuthBackend',
+    'apps.auth.backends.EmailAuthBackend',
 ]
 
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+
+
+LOGIN_REDIRECT_URL = '/profile'
+LOGIN_URL = '/'
