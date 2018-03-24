@@ -50,7 +50,14 @@ INSTALLED_APPS = [
     'apps.users',
     'scrapping',
     'social_django',
+    'django_elasticsearch_dsl',
 ]
+
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
