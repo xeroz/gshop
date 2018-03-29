@@ -9,7 +9,6 @@ class ProductTemplateView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProductTemplateView, self).get_context_data(**kwargs)
         context['category'] = Category.objects.get(slug=kwargs['slug'])
-        print(context, '##############')
         return context
 
 
@@ -19,7 +18,6 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print('############################333')
         return context
 
 def index(request):

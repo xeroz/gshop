@@ -29,5 +29,6 @@ class SearchResultView(TemplateView):
             products = ''
 
         context['products'] = products
+        context['search'] = search
 
         return self.render_to_response(context)
