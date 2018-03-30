@@ -1,21 +1,11 @@
-<div class="block-center mt-xl wd-xl">
-    <!-- START panel-->
-    <div class="panel panel-dark panel-flat">
-        <div class="panel-heading text-center">
-            <a href="#">
-            </a>
-        </div>
-        <div class="panel-body">
-            <p class="text-center pv">Te hemos enviado un correo con un enlace para reestablecer tu contraseña</p>
-        </div>
-    </div>
-    <!-- END panel-->
-    <div class="p-lg text-center">
-        <span>&copy;</span>
-        <span>2016</span>
-        <span>-</span>
-        <span>Angle</span>
-        <br>
-        <span>Bootstrap Admin Template</span>
-    </div>
+{% extends "shop/layouts/base.html" %}
+
+{% block content %}
+<!-- Page Content-->
+<div class="container padding-top-3x padding-bottom-3x mb-1">
+   <img class="d-block m-auto" src="http://asesoriaenmarketingdigital.com/wp-content/uploads/2017/12/enviado.png" style="width: 100%; max-width: 550px;" alt="404">
+   <div class="padding-top-1x mt-2 text-center">
+      <p>We have sent you an email with a link to reset your password <a href="{% url 'auth:login' %}">Go back to Login</a></p>
+   </div>
 </div>
+{% endblock %}
