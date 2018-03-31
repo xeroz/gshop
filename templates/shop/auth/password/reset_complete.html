@@ -1,0 +1,14 @@
+{% extends "shop/layouts/base.html" %}
+
+{% block content %}
+<!-- Page Content-->
+<div class="container padding-top-3x padding-bottom-3x mb-1">
+   <img class="d-block m-auto" src="https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Lock-512.png" style="width: 100%; max-width: 550px;" alt="404">
+   <div class="padding-top-1x mt-2 text-center">
+      <h3>Your password is correctly reset</h3>
+      <p>It seems we can’t find page you are looking for.
+         <a href="{% url 'auth:login' %}">Go to Login</a>
+      </p>
+   </div>
+</div>
+{% endblock %}
