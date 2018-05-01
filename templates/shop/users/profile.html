@@ -1,5 +1,7 @@
 {% extends "shop/layouts/base.html" %}
 
+{% load static %}
+
 {% block content %}
 <!-- Page Title-->
 <div class="page-title">
@@ -23,15 +25,12 @@
    <div class="row">
       <div class="col-lg-4">
          <aside class="user-info-wrapper">
-            <div class="user-cover" style="background-image: url(img/account/user-cover-img.jpg);">
-               <div class="info-label" data-toggle="tooltip" title="You currently have 290 Reward Points to spend">
-                  <i class="icon-medal"></i>290 points
-               </div>
+            <div class="user-cover" style="background-image: url({% static 'shop/img/account/user-cover-img.jpg' %});">
             </div>
             <div class="user-info">
                <div class="user-avatar">
                   <a class="edit-avatar" href="#"></a>
-                  <img src="img/account/user-ava.jpg" alt="User">
+                  <img src="{% static 'shop/img/account/user-ava.jpg' %}" alt="User">
                </div>
                <div class="user-data">
                   <h4>Daniel Adams</h4>
@@ -66,19 +65,19 @@
             <div class="col-md-6">
                <div class="form-group">
                   <label for="account-fn">First Name</label>
-                  <input class="form-control" type="text" id="account-fn" value="Daniel" required>
+                  <input class="form-control" type="text" id="account-fn" value="{{ request.user.first_name }}" required>
                </div>
             </div>
             <div class="col-md-6">
                <div class="form-group">
                   <label for="account-ln">Last Name</label>
-                  <input class="form-control" type="text" id="account-ln" value="Adams" required>
+                  <input class="form-control" type="text" id="account-ln" value="{{ request.user.last_name }}" required>
                </div>
             </div>
             <div class="col-md-6">
                <div class="form-group">
                   <label for="account-email">E-mail Address</label>
-                  <input class="form-control" type="email" id="account-email" value="daniel.adams@mail.com" disabled>
+                  <input class="form-control" type="email" id="account-email" value="{{ request.user.email }}" disabled>
                </div>
             </div>
             <div class="col-md-6">
