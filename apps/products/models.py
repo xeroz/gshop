@@ -3,6 +3,7 @@ from .managers import ShopDepartmentManager
 from uuslug import uuslug
 from django.urls import reverse
 from froala_editor.fields import FroalaField
+from django.contrib.auth.models import User
 
 
 class Brand(models.Model):
@@ -112,3 +113,16 @@ class Publicity(models.Model):
         related_name='publicity',
         on_delete=models.DO_NOTHING,
     )
+
+
+class ListWish(models.Model):
+    user = models.ForeignKey(
+        User,
+        related_name='products',
+        on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        Product,
+        related_name='users',
+        on_delete=models.CASCADE)
+    date = models.DateField()
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)

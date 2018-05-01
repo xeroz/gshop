@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!-- Search-->
 <form class="site-search" method="get" action="{% url 'web:search_result' %}">
    <input type="text" name="search" placeholder="Type to search...">
@@ -71,14 +71,14 @@
             <ul class="toolbar-dropdown">
                 <li class="sub-menu-user">
                    <div class="user-ava">
-                      <img src="img/account/user-ava-sm.jpg" alt="Daniel Adams">
+                      <img src="{% static 'shop/img/account/user-ava-sm.jpg' %}" alt="Daniel Adams">
                    </div>
                    <div class="user-info">
-                      <h6 class="user-name">Daniel Adams</h6>
+                      <h6 class="user-name">{{ request.user.first_name }} {{ request.user.last_name}}</h6>
                       <span class="text-xs text-muted">290 Reward points</span>
                    </div>
                 </li>
-                <li><a href="account-profile.html">My Profile</a></li>
+                <li><a href="{% url 'users:profile' %}">My Profile</a></li>
                 <li><a href="account-orders.html">Orders List</a></li>
                 <li><a href="account-wishlist.html">Wishlist</a></li>
                 <li class="sub-menu-separator"></li>
@@ -95,8 +95,14 @@
             <span class="count">3</span>
             <span class="subtotal">$289.68</span>
             <div class="toolbar-dropdown">
-               <div class="dropdown-product-item"><span class="dropdown-product-remove"><i class="icon-cross"></i></span><a class="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/01.jpg" alt="Product"></a>
-                 <div class="dropdown-product-info"><a class="dropdown-product-title" href="shop-single.html">Unionbay Park</a><span class="dropdown-product-details">1 x $43.90</span></div>
+               <div class="dropdown-product-item">
+                  <span class="dropdown-product-remove">
+                     <i class="icon-cross"></i>
+                  </span>
+                  <a class="dropdown-product-thumb" href="shop-single.html">
+                  <img src="img/cart-dropdown/01.jpg" alt="Product"></a>
+                  <div class="dropdown-product-info">
+                     <a class="dropdown-product-title" href="shop-single.html">Unionbay Park</a><span class="dropdown-product-details">1 x $43.90</span></div>
                </div>
                <div class="dropdown-product-item"><span class="dropdown-product-remove"><i class="icon-cross"></i></span><a class="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/02.jpg" alt="Product"></a>
                  <div class="dropdown-product-info"><a class="dropdown-product-title" href="shop-single.html">Daily Fabric Cap</a><span class="dropdown-product-details">2 x $24.89</span></div>
