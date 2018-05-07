@@ -87,6 +87,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('products:detail', kwargs={'slug': self.slug})
 
+    def is_added_whish_list(self):
+        return 'mdsvjs'
+
 
 class DescriptionProduct(models.Model):
     content = FroalaField()
@@ -124,5 +127,4 @@ class ListWish(models.Model):
         Product,
         related_name='users',
         on_delete=models.CASCADE)
-    date = models.DateField()
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)

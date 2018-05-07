@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import ShopDepartment, Category, Brand, Product, ImageProduct, DescriptionProduct
+from .models import (
+    ShopDepartment,
+    Category,
+    Brand,
+    Product,
+    ImageProduct,
+    DescriptionProduct,
+    ListWish
+)
 
 
 @admin.register(ShopDepartment)
@@ -33,5 +41,10 @@ class ImageProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(DescriptionProduct)
-class DescriptionProducttAdmin(admin.ModelAdmin):
+class DescriptionProductAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(ListWish)
+class ListWishAdmin(admin.ModelAdmin):
     pass
