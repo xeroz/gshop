@@ -19,3 +19,6 @@ class EmailAuthBackend:
             return User.objects.get(pk=uid)
         except:
             return None
+
+    def list_wish(self):
+        return 'sdkdsdsl'

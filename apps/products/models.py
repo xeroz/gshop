@@ -1,5 +1,5 @@
 from django.db import models
-from .managers import ShopDepartmentManager
+from .managers import ShopDepartmentManager, ProductManager
 from uuslug import uuslug
 from django.urls import reverse
 from froala_editor.fields import FroalaField
@@ -79,6 +79,7 @@ class Product(models.Model):
     image = models.URLField(blank=True)
     slug = models.SlugField(blank=True)
     web_url = models.URLField(blank=True)
+    objects = ProductManager()
 
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self)
@@ -87,8 +88,17 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('products:detail', kwargs={'slug': self.slug})
 
-    def is_added_whish_list(self):
-        return 'mdsvjs'
+    def is_added_whish_list(self, user):
+        querys = self.users.all()
+        if querys.exists():
+            for query in querys:
+                if query.user == user:
+                    valid = True
+                else:
+                    valid = False
+        else:
+            valid = False
+        return valid
 
 
 class DescriptionProduct(models.Model):

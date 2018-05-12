@@ -99,8 +99,9 @@
                </div>
                <div class="sp-buttons mt-2 mb-2">
                   {% if request.user.is_authenticated %}
-                  <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist">
-                     <i class="icon-heart"></i>{{ object. }}
+
+                  <button class="btn btn-outline-secondary btn-sm btn-wishlist {% if product_is_added_whish_list %} active {% endif %}" data-toggle="tooltip" title="Whishlist">
+                     <i class="icon-heart"></i>
                   </button>
                   <input type="hidden" id="user_email" value="{{ request.user.email }}">
                   <input type="hidden" id="product" value="{{ object.slug }}">
@@ -242,93 +243,23 @@
       <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">You May Also Like</h3>
       <!-- Carousel-->
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
+         {% for product_related in products_related %}
          <!-- Product-->
          <div class="grid-item">
             <div class="product-card">
                <div class="product-badge text-danger">22% Off</div>
-               <a class="product-thumb" href="shop-single.html">
-                  <img src="img/shop/products/09.jpg" alt="Product">
+               <a class="product-thumb" href="{{ product_related.get_absolute_url }}">
+                  <img src="{{ product_related.image }}" alt="Product">
                </a>
-               <h3 class="product-title"><a href="shop-single.html">Rocket Dog</a></h3>
+               <h3 class="product-title">
+                  <a href="shop-single.html">{{ product_related.name }}</a>
+               </h3>
                <h4 class="product-price">
                   <del>$44.95</del>$34.99
                </h4>
-               <div class="product-buttons">
-                  <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                  <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-               </div>
             </div>
          </div>
-         <!-- Product-->
-         <div class="grid-item">
-            <div class="product-card">
-               <div class="rating-stars">
-                  <i class="icon-star filled"></i>
-                  <i class="icon-star filled"></i>
-                  <i class="icon-star filled"></i>
-                  <i class="icon-star filled"></i>
-                  <i class="icon-star"></i>
-               </div>
-               <a class="product-thumb" href="shop-single.html">
-                  <img src="img/shop/products/03.jpg" alt="Product">
-               </a>
-               <h3 class="product-title"><a href="shop-single.html">Oakley Kickback</a></h3>
-               <h4 class="product-price">$155.00</h4>
-               <div class="product-buttons">
-                  <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                  <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-               </div>
-            </div>
-         </div>
-         <!-- Product-->
-         <div class="grid-item">
-            <div class="product-card"><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/12.jpg" alt="Product"></a>
-               <h3 class="product-title"><a href="shop-single.html">Vented Straw Fedora</a></h3>
-               <h4 class="product-price">$49.50</h4>
-               <div class="product-buttons">
-                  <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                  <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-               </div>
-            </div>
-         </div>
-         <!-- Product-->
-         <div class="grid-item">
-            <div class="product-card">
-               <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i>
-               </div><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/11.jpg" alt="Product"></a>
-              <h3 class="product-title"><a href="shop-single.html">Top-Sider Fathom</a></h3>
-              <h4 class="product-price">$90.00</h4>
-              <div class="product-buttons">
-                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="grid-item">
-            <div class="product-card"><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/04.jpg" alt="Product"></a>
-              <h3 class="product-title"><a href="shop-single.html">Waist Leather Belt</a></h3>
-              <h4 class="product-price">$47.00</h4>
-              <div class="product-buttons">
-                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="grid-item">
-            <div class="product-card">
-              <div class="product-badge text-danger">50% Off</div><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/01.jpg" alt="Product"></a>
-              <h3 class="product-title"><a href="shop-single.html">Unionbay Park</a></h3>
-              <h4 class="product-price">
-                <del>$99.99</del>$49.99
-              </h4>
-              <div class="product-buttons">
-                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-              </div>
-            </div>
-          </div>
+         {% endfor %}
         </div>
       </div>
 {% endblock %}

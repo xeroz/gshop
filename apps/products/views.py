@@ -20,6 +20,11 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        user = self.request.user
+        product = kwargs['object']
+        products_related = Product.objects.related(product.category)
+        context['products_related'] = products_related
+        context['product_is_added_whish_list'] = product.is_added_whish_list(user)
         return context
 
 

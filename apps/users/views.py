@@ -11,15 +11,20 @@ class ProfileTemplateView(TemplateView):
         return context
 
 
+class WishListTemplateView(TemplateView):
+    template_name = 'shop/users/wish_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(WishListTemplateView, self).get_context_data(**kwargs)
+        return context
+
+
 def create(request):
     if request.method == 'POST':
         form = Registrationform(request.POST)
-        print (form, 'uuuuuuuuuuu')
         if form.is_valid():
-            print('ddddddddddd')
             form.save()
             return redirect('/login')
         else:
-            print('eeeeeeeeeeeeee')
             data = {'form': form}
             return render(request, 'shop/users/profile.html', data)
