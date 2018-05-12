@@ -8,6 +8,7 @@ class ProfileTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProfileTemplateView, self).get_context_data(**kwargs)
+        context['active_profile'] = True
         return context
 
 
@@ -16,6 +17,10 @@ class WishListTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(WishListTemplateView, self).get_context_data(**kwargs)
+        context['active_wishlist'] = True
+        query = self.request.user.products.all()
+        for dd in query:
+            print (dd.product.name, '############')
         return context
 
 

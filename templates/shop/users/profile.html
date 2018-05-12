@@ -24,23 +24,7 @@
 <div class="container padding-bottom-3x mb-2">
    <div class="row">
       <div class="col-lg-4">
-         <aside class="user-info-wrapper">
-            <div class="user-cover" style="background-image: url({% static 'shop/img/account/user-cover-img.jpg' %});">
-            </div>
-            <div class="user-info">
-               <div class="user-avatar">
-                  <a class="edit-avatar" href="#"></a>
-                  <img src="{% static 'shop/img/account/user-ava.jpg' %}" alt="User">
-               </div>
-               <div class="user-data">
-                  <h4>Daniel Adams</h4>
-                  <span>Joined February 06, 2017</span>
-               </div>
-            </div>
-         </aside>
-         <nav class="list-group">
-            {% include 'shop/users/navbar.html' %}
-         </nav>
+         {% include 'shop/users/navbar.html' %}
       </div>
       <div class="col-lg-8">
          <div class="padding-top-2x mt-2 hidden-lg-up"></div>
