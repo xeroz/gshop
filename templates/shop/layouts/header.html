@@ -2,12 +2,19 @@
 <!-- Search-->
 <form class="site-search" method="get" action="{% url 'web:search_result' %}">
    <input type="text" name="search" placeholder="Type to search...">
-   <div class="search-tools"><span class="clear-search">Clear</span><span class="close-search"><i class="icon-cross"></i></span></div>
+   <div class="search-tools">
+      <span class="clear-search">Clear</span>
+      <span class="close-search">
+         <i class="icon-cross"></i>
+      </span>
+   </div>
 </form>
 <div class="site-branding">
    <div class="inner">
       <!-- Site Logo-->
-      <a class="site-logo" href="{% url 'web:home' %}"><img src="{% static 'shop/img/logo/logo.png' %}" alt="Unishop"></a>
+      <a class="site-logo" href="{% url 'web:home' %}">
+         <img src="{% static 'shop/img/logo/logo.png' %}" alt="Unishop">
+      </a>
    </div>
 </div>
 <!-- Main Navigation-->
