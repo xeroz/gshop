@@ -6,7 +6,8 @@ from .models import (
     Product,
     ImageProduct,
     DescriptionProduct,
-    ListWish
+    ListWish,
+    OfferAd
 )
 
 
@@ -14,6 +15,11 @@ from .models import (
 class ShopDepartmentAdmin(admin.ModelAdmin):
     list_display = ['name', 'active', 'top_shop']
     list_editable = ['active', 'top_shop']
+
+
+@admin.register(OfferAd)
+class OfferAdAdmin(admin.ModelAdmin):
+    list_display = ['url', 'active', 'category']
 
 
 @admin.register(Brand)

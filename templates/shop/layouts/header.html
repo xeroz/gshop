@@ -26,14 +26,20 @@
       {% for shop_department in shop_departments %}
       <li class="has-megamenu"><a href="#"><span>{{ shop_department.name }}</span></a>
          <ul class="mega-menu">
-            <li><span class="mega-menu-title">Top Categories</span>
+            <li>
+               <span class="mega-menu-title">Top Categories</span>
                <ul class="sub-menu">
                {% for category in shop_department.categories.all %}
-               <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+               <li>
+                  <a href="{{ category.get_absolute_url }}">
+                     {{ category.name }}
+                  </a>
+               </li>
                {% endfor %}
                </ul>
             </li>
-            <li><span class="mega-menu-title">Brands</span>
+            <li>
+               <span class="mega-menu-title">Brands</span>
                <ul class="sub-menu">
                   <li><a href="#">Junior's Shop</a></li>
                   <li><a href="#">Swim Shop</a></li>
@@ -43,8 +49,9 @@
                   <li><a href="#">Accessories Shop</a></li>
                </ul>
             </li>
+            {% for offer_ad in shop_department.offers_add_active %}
             <li>
-               <section class="promo-box" style="background-image: url(img/banners/02.jpg);">
+               <section class="promo-box" style="background-image: url({{ offer_ad.image }});">
                   <span class="overlay-dark" style="opacity: .4;"></span>
                   <div class="promo-box-content text-center padding-top-2x padding-bottom-2x">
                      <h4 class="text-light text-thin text-shadow">New Collection of</h4>
@@ -52,16 +59,7 @@
                   </div>
                </section>
             </li>
-            <li>
-               <section class="promo-box" style="background-image: url(img/banners/03.jpg);">
-               <!-- Choose between .overlay-dark (#000) or .overlay-light (#fff) with default opacity of 50%. You can overrride default color and opacity values via 'style' attribute.--><span class="overlay-dark" style="opacity: .45;"></span>
-               <div class="promo-box-content text-center padding-top-2x padding-bottom-2x">
-                  <h3 class="text-bold text-light text-shadow">Limited Offer</h3>
-                  <h4 class="text-light text-thin text-shadow">save up to 50%!</h4>
-                  <a class="btn btn-sm btn-primary" href="#">Learn More</a>
-               </div>
-               </section>
-            </li>
+            {% endfor %}
          </ul>
       </li>
       {% endfor %}

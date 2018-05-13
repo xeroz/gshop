@@ -36,6 +36,20 @@ class ShopDepartment(models.Model):
     def get_top_category(self):
         return self.categories.filter(top_category=True)
 
+    def offers_add_active(self):
+        return self.offer_ads.filter(active=True)
+
+
+class OfferAd(models.Model):
+    url = models.CharField(blank=True, max_length=350)
+    image = models.URLField(blank=True)
+    active = models.BooleanField(default=False)
+    category = models.ForeignKey(
+        ShopDepartment,
+        related_name='offer_ads',
+        on_delete=models.DO_NOTHING,
+    )
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
