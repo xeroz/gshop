@@ -46,12 +46,12 @@
           <tr>
             <td>
               <div class="product-item">
-                <a class="product-thumb" href="shop-single.html">
+                <a class="product-thumb" href="{{ wish_list.product.get_absolute_url }}" target="_blank">
                   <img src="{{ wish_list.product.image }}" alt="Product">
                 </a>
                 <div class="product-info">
                   <h4 class="product-title">
-                    <a href="shop-single.html">{{ wish_list.product.name }}</a>
+                    <a href="{{ wish_list.product.get_absolute_url }}" target="_blank">{{ wish_list.product.name }}</a>
                   </h4>
                   <div class="text-lg text-medium text-muted">${{ wish_list.product.price }}</div>
                   <div>Availability:

@@ -32,6 +32,23 @@ def index(request):
     return render(request, 'admin/layouts/base.html', {})
 
 
+def remove_whish_list(request):
+    user_email = request.GET.get('user_email')
+    product = request.GET.get('product')
+
+    user = User.objects.get(email=user_email)
+    product = Product.objects.get(slug=product)
+
+    list_wish = ListWish.objects.filter(user=user, product=product)
+    print (list_wish, '###############')
+    if list_wish.exists():
+        list_wish.delete()
+
+    data = {'msg': 'remove product'}
+
+    return JsonResponse(data)
+
+
 def add_whish_list(request):
     user_email = request.GET.get('user_email')
     product = request.GET.get('product')

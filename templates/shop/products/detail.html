@@ -99,7 +99,11 @@
                </div>
                <div class="sp-buttons mt-2 mb-2">
                   {% if request.user.is_authenticated %}
-                  <button class="btn btn-outline-secondary btn-sm btn-wishlist {% if product_is_added_whish_list %} active {% endif %}" data-toggle="tooltip" title="Whishlist">
+                  {% if product_is_added_whish_list %}
+                  <button class="btn btn-outline-secondary btn-sm btn-wishlist active" id="wishlist-deactive" data-toggle="tooltip" title="Whishlist">
+                  {% else %}
+                  <button class="btn btn-outline-secondary btn-sm btn-wishlist" id="wishlist-active" data-toggle="tooltip" title="Whishlist">
+                  {% endif %}
                      <i class="icon-heart"></i>
                   </button>
                   <input type="hidden" id="user_email" value="{{ request.user.email }}">
