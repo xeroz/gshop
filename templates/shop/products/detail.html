@@ -99,7 +99,6 @@
                </div>
                <div class="sp-buttons mt-2 mb-2">
                   {% if request.user.is_authenticated %}
-
                   <button class="btn btn-outline-secondary btn-sm btn-wishlist {% if product_is_added_whish_list %} active {% endif %}" data-toggle="tooltip" title="Whishlist">
                      <i class="icon-heart"></i>
                   </button>
@@ -257,6 +256,10 @@
                <h4 class="product-price">
                   <del>$44.95</del>$34.99
                </h4>
+               <div class="product-buttons">
+                  <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                  <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+               </div>
             </div>
          </div>
          {% endfor %}
