@@ -106,10 +106,10 @@
                   {% endif %}
                      <i class="icon-heart"></i>
                   </button>
+                  {% endif %}
                   <input type="hidden" id="user_email" value="{{ request.user.email }}">
                   <input type="hidden" id="product" value="{{ object.slug }}">
-                  {% endif %}
-                  <button class="btn btn-primary" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">
+                  <button class="btn btn-primary" id="add_cart" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">
                      <i class="icon-bag"></i> Add to Cart
                   </button>
                </div>

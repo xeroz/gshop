@@ -95,6 +95,9 @@ class Product(models.Model):
     web_url = models.URLField(blank=True)
     objects = ProductManager()
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.name, instance=self)
         super(Product, self).save(*args, **kwargs)

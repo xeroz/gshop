@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'apps.web',
     'apps.core',
     'apps.users',
+    'apps.carts',
     'scrapping',
     'social_django',
     'django_elasticsearch_dsl',
