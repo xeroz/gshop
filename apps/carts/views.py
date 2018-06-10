@@ -1,7 +1,18 @@
 from django.contrib.auth.models import User
+from django.views.generic import TemplateView
 from django.http import JsonResponse
 from apps.products.models import Product
 from .models import Cart
+
+
+class CartTemplateView(TemplateView):
+    template_name = 'shop/users/cart.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CartTemplateView, self).get_context_data(**kwargs)
+        user = self.request.user
+        context['cart'] = Cart.objects.get(user=user)
+        return context
 
 
 def add_cart(request):
