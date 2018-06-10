@@ -11,6 +11,7 @@ class CartTemplateView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CartTemplateView, self).get_context_data(**kwargs)
         user = self.request.user
+        context['active_cart'] = True
         context['cart'] = Cart.objects.get(user=user)
         return context
 

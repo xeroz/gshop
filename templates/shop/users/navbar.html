@@ -13,8 +13,8 @@
    </div>
 </aside>
 <nav class="list-group">
-   <a class="list-group-item with-badge" href="account-orders.html">
-      <i class="icon-bag"></i>Orders
+   <a class="list-group-item with-badge {% if active_cart %} active {% endif %}" href="{% url 'carts:list' %}">
+      <i class="icon-bag"></i>Cart
       <span class="badge badge-primary badge-pill">6</span>
    </a>
    <a class="list-group-item {% if active_profile %} active {% endif %}" href="{% url 'users:profile' %}">
