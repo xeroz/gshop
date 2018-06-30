@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'scrapping',
     'social_django',
     'django_elasticsearch_dsl',
+    'paypal.standard.pdt',
 ]
 
 ELASTICSEARCH_DSL={
@@ -181,6 +182,8 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SESSION_COOKIE_SECURE = False
+
+PAYPAL_IDENTITY_TOKEN = os.getenv('PAYPAL_IDENTITY_TOKEN')
 
 LOGIN_REDIRECT_URL = '/profile'
 LOGIN_URL = '/'

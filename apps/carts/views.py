@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.views.generic import TemplateView
 from django.http import JsonResponse
+from django.db.models import Sum
 from apps.products.models import Product
 from .models import Cart
 
@@ -13,6 +14,8 @@ class CartTemplateView(TemplateView):
         user = self.request.user
         context['active_cart'] = True
         context['cart'] = Cart.objects.get(user=user)
+        context['products'] = Cart.objects.filter(user=user).aggregate(subtotal=Sum('products__price'))
+
         return context
 
 
